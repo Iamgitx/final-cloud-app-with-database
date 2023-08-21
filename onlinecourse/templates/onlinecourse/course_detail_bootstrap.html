@@ -83,7 +83,7 @@
             
                 {% if user.is_authenticated %}
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#examCollapse" aria-expanded="false" aria-controls="examCollapse">
-                    Развернуть экзамен
+                    Expand the exam
                 </button>
                 <div class="collapse mt-3" id="examCollapse">
                     <form method="post" action="{% url 'onlinecourse:submit' course.id %}">
