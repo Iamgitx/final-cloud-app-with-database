@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 # <HINT> Import any new Models here
-from .models import Course, Enrollment, Choice
+from .models import *
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
@@ -113,13 +113,12 @@ def enroll(request, course_id):
          # Redirect to show_exam_result with the submission id
 #def submit(request, course_id):
 def submit(request, course_id):
-    if request.method == 'POST':
-        selected_choices = []
-        for choice_id in request.POST:
-            if choice_id.startswith('choice_'):
-                selected_choices.append(request.POST[choice_id])
-        messages.success(request, 'Экзамен отправлен успешно!')
-        return redirect('course_details', course_id=your_course_id)
+    
+ 
+
+
+
+
 
 
 
@@ -144,4 +143,4 @@ def extract_answers(request):
 
 
 def show_exam_result(request, course_id, submission_id):
-    return 'PROVERKA'
+    'PROVERKA'
