@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 # <HINT> Import any new Models here
 from .models import *
 from django.contrib.auth.models import User
@@ -113,6 +113,8 @@ def enroll(request, course_id):
          # Redirect to show_exam_result with the submission id
 #def submit(request, course_id):
 def submit(request, course_id):
+    return render(request, "onlinecourse/course_detail_bootstrap.html")
+
     
  
 
@@ -143,4 +145,4 @@ def extract_answers(request):
 
 
 def show_exam_result(request, course_id, submission_id):
-    'PROVERKA'
+    print('PROVERKA2')
