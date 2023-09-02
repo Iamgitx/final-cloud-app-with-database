@@ -1,4 +1,3 @@
-from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 # <HINT> Import any new Models here
 from .models import Course, Enrollment, Question, Choice, Submission
