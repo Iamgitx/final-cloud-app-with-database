@@ -113,7 +113,7 @@ def enroll(request, course_id):
          # Redirect to show_exam_result with the submission id
 #def submit(request, course_id):
 def submit(request, course_id):
-    return render(request, 'onlinecourse/course_detail_bootstrap.html', context)
+    return render(request, 'onlinecourse/course_detail_bootstrap.html')
 
     
  
