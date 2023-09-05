@@ -112,17 +112,20 @@ def enroll(request, course_id):
          # Redirect to show_exam_result with the submission id
 #def submit(request, course_id):
 def submit(request, course_id):
-    return render(request, 'onlinecourse/course_detail_bootstrap.html')
-
-    
+    # Получение текущего пользователя
+    context = {}
+    user = request.user
+    # Объект курса
+    course = Course.objects.get(pk=course_id)
+    # объект регистрации
+    enrollment = Enrollment.objects.get(user=user, course=course)
+    # объект отправки
+    submission = Submission.objects.create(enrollment=enrollment)
+    # получение данных из HTTP запроса
+    if request.method == 'POST':    
+        context[choice.id] = request.POST.get("choice_{{choice.id}}")
+   
  
-
-
-
-
-
-
-
 # <HINT> A example method to collect the selected choices from the exam form from the request object
 def extract_answers(request):
    submitted_anwsers = []
