@@ -160,10 +160,11 @@ def show_exam_result(request, course_id,submission_id):
     # Для каждого выбранного варианта проверьте, правильный это ответ или нет
     # Рассчитайте общий балл, суммируя оценки по всем вопросам курса
     for question in questions:
-        total += question.grade
+        total += question.question_grade
     for choice in choices:
-        if choice.is_correct:
+        if choice.choice_grade:
             total_score += choice.question.grade
     context['course'] = course
-    context['grade'] = (total_score/total)*100
+    context['grade'] = (total*total_score)*100
     context['choices'] = choices
+    return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
