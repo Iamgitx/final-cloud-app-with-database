@@ -122,10 +122,10 @@ def submit(request, course_id):
     submission = Submission.objects.create(enrollment=enrollment)
     # Добавление каждого выбранного варианта в объект отправки
     choices = extract_answers(request)
-    submission.choice.set(choices)
+    submission.choices.set(choices)
     submission_id = submission.id
     # Перенаправление на show_exam_result с идентификатором отправки
-    return HttpResponseRedirect(reverse(viewname='onlinecourse:show_result_bootstrap', args=(course_id, submission_id,)))
+    return HttpResponseRedirect(reverse(viewname='onlinecourse:show_result', args=(course_id, submission_id,)))
    
  
 # <HINT> A example method to collect the selected choices from the exam form from the request object
@@ -153,7 +153,7 @@ def show_exam_result(request, course_id,submission_id):
     course = get_object_or_404(Course, pk=course_id)
     submission = get_object_or_404(Submission, pk=submission_id)
     # Получите выбранные идентификаторы выбора из записи отправки
-    choices = submission.choice.all()
+    choices = submission.choices.all()
     total_score = 0
     total = 0
     questions = course.question_set.all()
