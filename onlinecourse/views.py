@@ -154,8 +154,8 @@ def show_exam_result(request, course_id,submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
     # Получите выбранные идентификаторы выбора из записи отправки
     choices = submission.choices.all()
-    total_score = 0
     total = 0
+    total_score = 0
     questions = course.question_set.all()
     # Для каждого выбранного варианта проверьте, правильный это ответ или нет
     # Рассчитайте общий балл, суммируя оценки по всем вопросам курса
@@ -163,8 +163,8 @@ def show_exam_result(request, course_id,submission_id):
         total += question.question_grade
     for choice in choices:
         if choice.choice_grade:
-            total_score += choice.question.grade
+            total_score += choice.choice_grade
     context['course'] = course
-    context['grade'] = (total*total_score)*100
+    context['grade'] = (total_score/total)*100
     context['choices'] = choices
     return render(request, 'onlinecourse/exam_result_bootstrap.html', context)
